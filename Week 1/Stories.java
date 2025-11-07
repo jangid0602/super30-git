@@ -102,29 +102,22 @@ public class Stories {
         return totalTime;
     }
 
-    // 7.
+    // 7. Runs the Geometry hierarchy story
 
-    public String runGeometryStory(float x1, float y1, float x2, float y2, double radius, double side, float dx,
-            float dy) {
-        // Create points
+    public String runGeometryStory(float x1, float y1, float x2, float y2, double radius, double side, float dx, float dy) {
         Point p1 = new Point(x1, y1);
         Point p2 = new Point(x2, y2);
 
-        // Calculate distance
         double dist = p1.distance(p2);
 
-        // Create shapes
         Shape circle = new Circle(radius);
         Shape square = new Square(side);
 
-        // Calculate areas
         double circleArea = circle.getArea();
         double squareArea = square.getArea();
 
-        // Translate p1
         p1.translate(dx, dy);
 
-        // Build the output string
         String nl = System.lineSeparator(); // For cross-platform new lines
         return "Distance: " + String.format("%.1f", dist) + nl +
                 "Circle Area: " + String.format("%.2f", circleArea) + nl +
@@ -132,29 +125,16 @@ public class Stories {
                 "Translated Point1: " + p1.toString();
     }
 
-    /*
-    *
-    * OOP Classes for "The Geometry Hierarchy" Story
-    * These are defined in the same file for simplicity, to match the project
-    * structure.
-    *
-    */
-
-    // 1. Base Class -> Point
     static class Point {
-        // Attributes (private for encapsulation)
         private float x;
         private float y;
 
-        // Constructor
         public Point(float x, float y) {
             this.x = x;
             this.y = y;
         }
 
-        // Methods
         public double distance(Point other) {
-            // Euclidean distance
             double dx = this.x - other.x;
             double dy = this.y - other.y;
             return Math.sqrt(dx * dx + dy * dy);
@@ -165,50 +145,40 @@ public class Stories {
             this.y += dy;
         }
 
-        // Override toString() (Java's version of __str__)
         @Override
         public String toString() {
-            // Format to one decimal place to match example output
             return "(" + String.format("%.1f", this.x) + ", " + String.format("%.1f", this.y) + ")";
         }
     }
 
-    // 2. Base Class -> Shape (Abstract)
     static abstract class Shape {
-        // Abstract method to be overridden by subclasses
         public abstract double getArea();
     }
 
-    // 3a. Derived Class -> Circle
     static class Circle extends Shape {
         private double radius;
 
-        // Constructor
         public Circle(double radius) {
             this.radius = radius;
         }
 
-        // Override getArea()
         @Override
         public double getArea() {
             return Math.PI * this.radius * this.radius;
         }
     }
 
-    // 3b. Derived Class -> Square
     static class Square extends Shape {
         private double side;
 
-        // Constructor
         public Square(double side) {
             this.side = side;
         }
 
-        // Override getArea()
         @Override
         public double getArea() {
             return this.side * this.side;
         }
     }
 
-} // <-- This is the closing brace for the public class Stories
+}
