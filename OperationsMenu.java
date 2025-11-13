@@ -1,3 +1,8 @@
+/* This Program perform various types of Operations like - The Efficient Traveler,  The Sum That stands out, Flip the switch, The odd One Out, 
+Smart Pair Finder, The Minimalist Painter, The Geometry Hierarchy etc. 
+Author: Jayesh Kumar Mali
+Date:- 06-11-2025
+*/
 import java.util.*;
 public class OperationsMenu {
 
@@ -334,4 +339,5 @@ public class OperationsMenu {
     }
 }
 }
+
 
