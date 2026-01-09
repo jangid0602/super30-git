@@ -58,20 +58,25 @@ public class MyTasks {
     }
 
     public char findExtraChar(String original, String scrambled) {
-        HashMap<Character, Integer> map = new HashMap<>();
+        int[] freq = new int[256]; 
+        for (int i = 0; i < scrambled.length(); i++) {
+            freq[scrambled.charAt(i)]++;
+        }
 
         for (int i = 0; i < original.length(); i++) {
-            char ch = original.charAt(i);
-            map.put(ch, map.getOrDefault(ch, 0) + 1);
+            freq[original.charAt(i)]--;
         }
-
-        for (int i = 0; i < scrambled.length(); i++) {
-            char ch = scrambled.charAt(i);
-            if (!map.containsKey(ch)) return ch;
-            map.put(ch, map.get(ch) - 1);
-            if (map.get(ch) < 0) return ch;
+        int extraChar = -1;
+        for (int i = 0; i < freq.length; i++) {
+            if(freq[i] > 0){
+                extraChar = i;
+                break;
+            }
         }
-        return ' ';
+        if(extraChar > -1){
+            return (char) extraChar ;
+        }
+        return '-';
     }
 
     static class Employee {
@@ -104,12 +109,19 @@ public class MyTasks {
     }
 
     public String ticketPlat(String[][] bookings) {
-        HashSet<Integer> hs = new HashSet<>();
+        int[] seats = new int[bookings.length];
+        int size = 0;
         for (String[] booking : bookings) {
             int seat = Integer.parseInt(booking[1]);
-            if (hs.contains(seat)) return booking[0];
-            hs.add(seat);
+            for (int i = 0; i < size; i++) {
+                if (seats[i] == seat) {
+                    return booking[0];
+                }
+            }
+            seats[size] = seat;
+            size++;
         }
+
         return "-1";
     }
 
