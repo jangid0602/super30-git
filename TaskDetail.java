@@ -44,14 +44,14 @@ public class TaskDetail {
 
     String getTask_4 = """
                   {-> The Spy’s Cipher <-}
-                    Problem Description:
+                   Problem Description:
             
-                    You are given two strings:
+                    You are given two Words:
                     ●  original
                     ●  scrambled
-                    The scrambled string is formed by rearranging the characters of original and adding
-                    exactly one extra character. Your task is to identify and return that extra character.
-                    This problem tests your ability to analyze character frequencies and compare string
+                    The scrambled string is formed by rearranging the alphabet of original and adding
+                    exactly one extra character. Your task is to identify and return that extra alphabet.
+                    This problem tests your ability to analyze alphabet frequencies and compare string
                     compositions efficiently.
             """;
 
