@@ -7,6 +7,7 @@ import java.util.*;
 
 public class ProgramMenu {
 
+    //The Cosmic Courier Challenge
     public int cosmiccourier(int traveltime[]) {
         if (traveltime.length <= 1) return traveltime[0];
 
@@ -24,6 +25,7 @@ public class ProgramMenu {
         return (secmax == Integer.MIN_VALUE) ? maxdeadline : secmax;
     }
 
+    //The Digital Library System
     static class Library {
         String[] books = new String[100];
         int count = 0;
@@ -71,6 +73,7 @@ public class ProgramMenu {
         }
     }
 
+    //The Factory Floor Robot
     public String[] factoryfloorlogic(int arr[]) {
         String[] result = new String[arr.length];
         for (int i = 0; i < arr.length; i++) {
@@ -82,6 +85,7 @@ public class ProgramMenu {
         return result;
     }
 
+    //The Spy's Cipher
     public char findExtraChar(String original, String scrambled) {
         HashMap<Character, Integer> map = new HashMap<>();
 
@@ -99,6 +103,7 @@ public class ProgramMenu {
         return ' ';
     }
 
+     //The Corporate Hierarchy System
     static class Employee {
         protected double baseSalary;
         Employee(double baseSalary) { this.baseSalary = baseSalary; }
@@ -122,13 +127,23 @@ public class ProgramMenu {
         return sum;
     }
 
-    public int prefixsum(int arr[], int i, int j) {
-        if (i < 0 || j >= arr.length) return 0;
-        int sum = 0;
-        while (i <= j) sum += arr[i++];
-        return sum;
+    //The Security Log Analyzer
+   public int prefixsum(int[] arr, int i, int j) {
+    if (i < 0 || j >= arr.length || i > j) return 0;
+    // create a new array
+    int[] prefix = new int[arr.length];
+    prefix[0] = arr[0];
+
+    for (int k = 1; k < arr.length; k++) {
+        prefix[k] = prefix[k - 1] + arr[k];
     }
 
+    // O(1) query
+    if (i == 0) return prefix[j];
+    return prefix[j] - prefix[i - 1];
+}
+
+    //The Concert Seat Manager
     public String ticketplat(String[][] bookings) {
         HashSet<Integer> hs = new HashSet<>();
         for (int i = 0; i < bookings.length; i++) {
@@ -139,6 +154,7 @@ public class ProgramMenu {
         return "-1";
     }
 
+    //The Weather Station Dara Aggregator
     public int calculatemaxTemp(int arr[]) {
         if (arr.length == 0) return 0;
         int max = arr[0], count = 1;
@@ -281,6 +297,7 @@ public class ProgramMenu {
         }
     }
 }
+
 
 
 
