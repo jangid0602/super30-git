@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Program{
-
+    static int[] prefix;
     public int cosmiccourier(int result[]) {
         int count=0;
         int largest=Integer.MIN_VALUE;
@@ -121,12 +121,20 @@ public class Program{
             sum += emp[i].Bonus();
         return sum;
     }
-
-    public int prefixsum(int arr[], int i, int j) {
-        if (i < 0 || j >= arr.length) return 0;
-        int sum = 0;
-        while (i <= j) sum += arr[i++];
-        return sum;
+        public static int[] prefixsum(int[] arr){
+        int n=arr.length;
+         prefix=new int[n];
+        if(n>0){
+            prefix[0]=arr[0]; 
+            for(int i=1;i<arr.length;i++){
+                prefix[i]=prefix[i-1]+arr[i];
+            }
+        }
+        return prefix;
+    }
+        public  int login(int i,int j){
+        if(i<0 || j>prefix.length) return 0;
+        return prefix[j]-prefix[i-1]; 
     }
 
     public String ticketplat(String[][] bookings) {
@@ -247,7 +255,8 @@ public class Program{
                         System.out.print("Enter i and j: ");
                         int i = sc.nextInt();
                         int j = sc.nextInt();
-                        System.out.println(m.prefixsum(log, i, j));
+                        prefixsum(log);
+                        System.out.println(m.login( i, j));
                         break;
 
                     case 7:
