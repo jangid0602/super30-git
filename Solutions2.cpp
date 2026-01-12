@@ -13,7 +13,7 @@ int cosmicCourier(vector<int>& arr) {
     if(arr.size() <= 1) return arr[0];
     int mx = -1e9, smx = -1e9;
     for(int i = 0; i < arr.size(); i++) {
-        if(arr[i] > mx) {
+        if(arr[i] >= mx) {
             smx = mx;
             mx = arr[i];
         } else if(arr[i] > smx && arr[i] < mx) {
@@ -263,5 +263,6 @@ int main() {
     cout << "Thank You\n";
     return 0;
 }
+
 
 
