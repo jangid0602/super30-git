@@ -125,11 +125,10 @@ double totalBonus(vector<Employee*>& emp) {
     return sum;
 }
 
-int prefixQuery(vector<int>& arr, int i, int j) {
+int prefixQuery(vector<int>& arr, int i, int j, vector<int>& pref) {
     if(i < 0 || j >= arr.size()) return 0;
-    int sum = 0;
-    while(i <= j) sum += arr[i++];
-    return sum;
+    if(i == 0) return pref[j];
+    else return pref[j] - pref[i-1];
 }
 
 string duplicateSeat(vector<vector<string>>& v) {
@@ -231,9 +230,12 @@ int main() {
                 cin >> n;
                 vector<int> a(n);
                 for(int i = 0; i < n; i++) cin >> a[i];
+                vector<int> pref(n, 0);
+                pref[0] = a[0];
+                for(int i = 1; i < n; i++) pref[i] = pref[i-1] + a[i];
                 int i,j;
                 cin >> i >> j;
-                cout << prefixQuery(a,i,j) << endl;
+                cout << prefixQuery(a, i, j, pref) << endl;
             } break;
 
             case 7: {
@@ -260,3 +262,4 @@ int main() {
     cout << "Thank You\n";
     return 0;
 }
+
