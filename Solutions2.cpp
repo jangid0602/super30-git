@@ -134,7 +134,7 @@ int prefixQuery(vector<int>& arr, int i, int j, vector<int>& pref) {
 string duplicateSeat(vector<vector<string>>& v) {
     unordered_set<string> st;
     for(auto &x : v) {
-        int seat = x[1];
+        string seat = x[1];
         if(st.count(seat)) return x[0];
         st.insert(seat);
     }
@@ -263,7 +263,3 @@ int main() {
     cout << "Thank You\n";
     return 0;
 }
-
-
-
-
