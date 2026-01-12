@@ -29,7 +29,7 @@ public class Main {
                 8. The Weather Station Data Aggregator
                 """;
                 do {
-                    System.out.print("Which of these stories would you like to explore ? :\n" + options + "enter operation to perform: ");
+                    System.out.print("Which of these stories would you like to explore ? :\n" + options + "\nJust enter the serial number: ");
                     String optionNumber = userInput.nextLine();
                     switch(optionNumber){
 
