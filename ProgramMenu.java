@@ -15,7 +15,7 @@ public class ProgramMenu {
         int secmax = Integer.MIN_VALUE;
 
         for (int i = 0; i < traveltime.length; i++) {
-            if (traveltime[i] > maxdeadline) {
+            if (traveltime[i] >= maxdeadline) {
                 secmax = maxdeadline;
                 maxdeadline = traveltime[i];
             } else if (traveltime[i] > secmax && traveltime[i] < maxdeadline) {
@@ -155,12 +155,12 @@ public class ProgramMenu {
     }
 
     //The Weather Station Dara Aggregator
-    public int calculatemaxTemp(int arr[]) {
+    public int calculatemaxTemp(String arr[]) {
         if (arr.length == 0) return 0;
-        int max = arr[0], count = 1;
+        int max = Integer.parseInt(arr[0]), count = 1;
         for (int i = 1; i < arr.length; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
+            if (Integer.parseInt(arr[i]) > max) {
+                max = Integer.parseInt(arr[i]);
                 count++;
             }
         }
@@ -280,9 +280,9 @@ public class ProgramMenu {
                     case 8:
                         System.out.print("Enter size of temperature array: ");
                         int n8 = sc.nextInt();
-                        int[] temp = new int[n8];
+                        String[] temp = new String[n8];
                         System.out.print("Enter elements: ");
-                        for (int i2 = 0; i2 < n8; i2++) temp[i2] = sc.nextInt();
+                        for (int i2 = 0; i2 < n8; i2++) temp[i2] = sc.next();
                         System.out.println(m.calculatemaxTemp(temp));
                         break;
 
@@ -297,6 +297,7 @@ public class ProgramMenu {
         }
     }
 }
+
 
 
 
