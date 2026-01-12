@@ -132,21 +132,21 @@ int prefixQuery(vector<int>& arr, int i, int j, vector<int>& pref) {
 }
 
 string duplicateSeat(vector<vector<string>>& v) {
-    unordered_set<int> st;
+    unordered_set<string> st;
     for(auto &x : v) {
-        int seat = stoi(x[1]);
+        int seat = x[1]);
         if(st.count(seat)) return x[0];
         st.insert(seat);
     }
     return "-1";
 }
 
-int recordTemps(vector<int>& arr) {
+int recordTemps(vector<string>& arr) {
     if(arr.size() == 0) return 0;
-    int mx = arr[0], cnt = 1;
+    int mx = stoi(arr[0]), cnt = 1;
     for(int i = 1; i < arr.size(); i++) {
-        if(arr[i] > mx) {
-            mx = arr[i];
+        if(stoi(arr[i]) > mx) {
+            mx = stoi(arr[i]);
             cnt++;
         }
     }
@@ -249,17 +249,19 @@ int main() {
             case 8: {
                 int n;
                 cin >> n;
-                vector<int> t(n);
+                vector<string> t(n);
                 for(int i = 0; i < n; i++) cin >> t[i];
                 cout << recordTemps(t) << endl;
             } break;
 
-            case 0:
+            case 0: {
                 run = false;
-                break;
+            }
+            break;
         }
     }
     cout << "Thank You\n";
     return 0;
 }
+
 
