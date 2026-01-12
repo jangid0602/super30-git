@@ -3,11 +3,22 @@ package Codeup.Story_2p5;
 import java.util.Scanner;
 
 public class Task_6 {
-    public int prefixsum(int arr[], int i, int j) {
-        if (i < 0 || j >= arr.length) return 0;
-        int sum = 0;
-        while (i <= j) sum += arr[i++];
-        return sum;
+    int [] prefixSum;
+    public int[] buildPrefixsum(int[] arr) {
+        int n = arr.length;
+        prefixSum = new int[n];
+        if(n>0){
+            prefixSum[0] = arr[0];
+            for(int i = 1;i< arr.length;i++){
+                prefixSum[i] = prefixSum[i-1] + arr[i];
+            }
+        }
+        return prefixSum;
+    }
+
+    public int login(int i,int j){
+        if(i<0 || j>prefixSum.length)return 0;
+        return prefixSum[j] - prefixSum[i-1];
     }
 
     public static void main(String[] args) {
@@ -21,7 +32,7 @@ public class Task_6 {
         System.out.print("Enter i and j: ");
         int i = sc.nextInt();
         int j = sc.nextInt();
-        System.out.println(m.prefixsum(log, i, j));
-
+        m.buildPrefixsum(log);
+        System.out.println(m.login(i, j));
     }
 }
