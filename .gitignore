@@ -1,0 +1,8 @@
+# Ignore embedded student story directories
+Story2.5/
+Story3/
+
+# Build/artifacts
+*.exe
+*.o
+*.obj
