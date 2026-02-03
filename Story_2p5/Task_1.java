@@ -10,7 +10,7 @@ public class Task_1 {
             return route[0];
 
         int max = Integer.MIN_VALUE;
-        int sMax = Integer.MIN_VALUE;
+        int secondMax = Integer.MIN_VALUE;
         int count = 0;
 
         for(int time : route){
