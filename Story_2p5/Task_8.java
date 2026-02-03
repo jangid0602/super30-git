@@ -3,7 +3,7 @@ package Codeup.Story_2p5;
 import java.util.Scanner;
 
 public class Task_8 {
-    public int calculatemaxTemp(int arr[]) {
+    public int calculateMaxTemp(int arr[]) {
         if (arr.length == 0) return 0;
         int max = arr[0], count = 1;
         for (int i = 1; i < arr.length; i++) {
