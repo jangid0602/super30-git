@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 public class Task_1 {
     public static int cosmicCourier(int route[]) {
-        if (route.length == 0) return -1;
-        if (route.length == 1) return route[0];
+        if (route.length == 0) 
+            return -1;
+        if (route.length == 1) 
+            return route[0];
 
         int max = Integer.MIN_VALUE;
         int sMax = Integer.MIN_VALUE;
