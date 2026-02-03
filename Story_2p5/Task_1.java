@@ -18,18 +18,18 @@ public class Task_1 {
 //            System.out.println(time);
 
             if(time > max){
-                sMax = max;
+                secondMax = max;
                 max = time;
                 count = 1;
             } else if (time == max) {
                 count++;
-            } else if (time > sMax) {
-                sMax = time;
+            } else if (time > secondMax) {
+                secondMax = time;
             }
         }
 
         if (count == 1){
-            return sMax;
+            return secondMax;
         }
         return max;
     }
