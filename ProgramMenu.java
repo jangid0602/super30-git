@@ -154,7 +154,7 @@ public class ProgramMenu {
         return "-1";
     }
 
-    //The Weather Station Dara Aggregator
+    //The Weather Station Data Aggregator
     public int calculatemaxTemp(String arr[]) {
         if (arr.length == 0) return 0;
         int max = Integer.parseInt(arr[0]), count = 1;
@@ -297,6 +297,7 @@ public class ProgramMenu {
         }
     }
 }
+
 
 
 
