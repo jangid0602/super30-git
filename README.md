@@ -1,1 +1,0 @@
-# super30-git
