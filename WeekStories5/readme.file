@@ -7,8 +7,6 @@
 
 Advanced Binary Tree algorithms, recursion, greedy strategies, and problem-solving techniques.
 
-**Standards:** Proper naming conventions, clean indentation, optimized approaches, edge case handling, structured code ethics.
-
 ---
 
 ## Problems Implemented
@@ -30,7 +28,6 @@ Advanced Binary Tree algorithms, recursion, greedy strategies, and problem-solvi
 
 - Empty tree
 - Single node tree
-- Balanced trees
 - Null nodes
 - Edge cases
 
