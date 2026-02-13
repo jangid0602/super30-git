@@ -1,0 +1,39 @@
+# Week 5 Stories – Tree Algorithms Assignment
+
+**Author:** Abhay  
+**Date:** 13/02/2026
+
+## Overview
+
+Advanced Binary Tree algorithms, recursion, greedy strategies, and problem-solving techniques.
+
+**Standards:** Proper naming conventions, clean indentation, optimized approaches, edge case handling, structured code ethics.
+
+---
+
+## Problems Implemented
+
+| # | Problem | Key Concepts | Time |
+|---|---------|--------------|------|
+| 1 | Palindromic Path Finder | Frequency counting, Bitmasking, Palindrome property | O(N) |
+| 2 | Vertical Silhouette | BFS, TreeMap, Level tracking | O(N log N) |
+| 3 | Distant Cousins | Level order traversal, Parent tracking, Depth comparison | O(N) |
+| 4 | Minimum Camera Coverage | Postorder DFS, Greedy states | O(N) |
+| 5 | Serializer/Deserializer | Preorder traversal, Queue reconstruction | O(N) |
+| 6 | K-Sum Path | Prefix sum, DFS, HashMap | O(N) |
+| 7 | Boundary Traversal | Left/right/leaf separation | O(N) |
+| 8 | LCA of Set | Recursive LCA, Set containment | O(N) |
+
+---
+
+## Test Coverage
+
+- Empty tree
+- Single node tree
+- Balanced trees
+- Null nodes
+- Edge cases
+
+## Technologies
+
+Java · OOP · Recursion · BFS/DFS · Greedy Algorithms · HashMap/TreeMap
