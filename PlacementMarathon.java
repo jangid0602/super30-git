@@ -1,37 +1,24 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class PlacementMarathon {
-    public static int solve(int [] arr,int n,int prev,int curr,int k,int [][]dp){
-        if(curr>=n) return 0;
-        if(dp[prev+1][curr]!=-1){
-            return dp[prev+1][curr];
+
+    
+    public int longestSubseq(int[] arr, int k) {
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int maxLength = 0;
+
+        for (int num : arr) {
+int prev = map.getOrDefault(num - k, 0);
+int currLength = prev + 1;
+
+            map.put(num, currLength);
+
+            maxLength = Math.max(maxLength, currLength);
         }
-        int take=0;
-        if(prev==-1 || Math.abs(arr[prev]-arr[curr])==k){
-            take=solve(arr,n,curr,curr+1,k,dp)+1;
-        }
-        int skip=solve(arr,n,prev,curr+1,k,dp);
-        dp[prev+1][curr]=Math.max(take,skip);
-        return dp[prev+1][curr];
+
+        return maxLength;
     }
-    public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Enter the size of the array");
-        int n=sc.nextInt();
-        System.out.println("Enter the difference");
-        int k=sc.nextInt();
-        System.out.println("Enter the array");
-        int []arr=new int[n];
-        for(int i=0;i<n;i++){
-            arr[i]=sc.nextInt();
-        }
-        int [][]dp=new int[n+1][n];
-        for(int i=0;i<n+1;i++){
-            for(int j=0;j<n;j++){
-                dp[i][j]=-1;
-            }
-        }
-        System.out.println(solve(arr,n,-1,0,k,dp));
-    }
-    }
+
+  
+}
