@@ -1,0 +1,109 @@
+import java.util.Arrays;
+import java.util.HashMap;
+
+public class Stories {
+    // Problem 1: The Startup Revenue Maxima (Linear DP)
+    public int maximumRevenue(int[] revenue) {
+        int n = revenue.length;
+        if (n == 0) return 0;
+        if (n == 1) return revenue[0];
+        int[] dp = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            int currentDayRevenue = ((i + 1) % 7 == 0) ? 2 * revenue[i] : revenue[i];
+
+            if (i == 0) {
+                dp[i] = currentDayRevenue;
+            } else if (i == 1) {
+                dp[i] = Math.max(dp[0], currentDayRevenue);
+            } else {
+                dp[i] = Math.max(dp[i - 1], currentDayRevenue + dp[i - 2]);
+            }
+        }
+        return dp[n - 1];
+    }
+
+    // Problem 2: Codeup Mentorship Matching (Bitmask DP)
+    public int mentorshipMatch(int n, int[][] scores) {
+        int numMasks = 1 << n; 
+        int[] dp = new int[numMasks];
+        for (int i = 0; i < numMasks - 1; i++) {
+            int mentorId = Integer.bitCount(i);
+            for (int j = 0; j < n; j++) {
+                if ((i & (1 << j)) == 0) {
+                    int nextMask = i | (1 << j);
+                    dp[nextMask] = Math.max(dp[nextMask], dp[i] + scores[mentorId][j]);
+                }
+            }
+        }
+        return dp[numMasks - 1];
+    }
+
+    // Problem 3: The Minimal Tech-Stack Swap (Edit Distance Variation)
+    public int techStackSwap(String s1, String s2, int ci, int cd, int cu) {
+        int m = s1.length();
+        int n = s2.length();
+        int[][] dp = new int[m + 1][n + 1];
+        for (int i = 0; i <= m; i++){
+            dp[i][0] = i * cd;
+        }
+        for (int j = 0; j <= n; j++){
+            dp[0][j] = j * ci; 
+        } 
+
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else {
+                    int delete = dp[i - 1][j] + cd;
+                    int insert = dp[i][j - 1] + ci;
+                    int upgrade = dp[i - 1][j - 1] + cu;
+                    dp[i][j] = Math.min(delete, Math.min(insert, upgrade));
+                }
+            }
+        }
+        return dp[m][n];
+    }
+
+    // Problem 4: Placement Marathon (DP on Subsequences)
+    public int placementMarathon(int[] a, int k) {
+        if (a == null || a.length == 0) return 0;
+        HashMap<Integer, Integer> dp = new HashMap<>();
+        int maxLength = 0;
+        for (int val : a) {
+            int prev1 = val - k;
+            int prev2 = val + k;
+            int len1 = dp.getOrDefault(prev1, 0);
+            int len2 = dp.getOrDefault(prev2, 0);
+            int currentLen = 1 + Math.max(len1, len2);
+            dp.put(val, Math.max(dp.getOrDefault(val, 0), currentLen));
+            maxLength = Math.max(maxLength, currentLen);
+        }
+        return maxLength;
+    }
+
+    // Problem 5: The Optimal Server Latency (Partition DP)
+    public int optimalServerLatency(int[] a, int k) {
+        int n = a.length;
+        int[][] dp = new int[k + 1][n + 1];
+        for (int i = 0; i <= k; i++) {
+            Arrays.fill(dp[i], 1000000); 
+        }
+        dp[0][0] = 0;
+        for (int i = 1; i <= k; i++) { 
+            for (int j = 1; j <= n; j++) { 
+                int maximum = Integer.MIN_VALUE;
+                int minimum = Integer.MAX_VALUE;
+                for (int p = j; p >= i; p--) {
+                    maximum = Math.max(maximum, a[p - 1]);
+                    minimum = Math.min(minimum, a[p - 1]);
+                    int currentUnbalance = maximum - minimum;
+                    
+                    dp[i][j] = Math.min(dp[i][j], dp[i - 1][p - 1] + currentUnbalance);
+                }
+            }
+        }
+        return dp[k][n];
+    }
+}
